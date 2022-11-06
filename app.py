@@ -24,7 +24,7 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    df = pd.read_csv("C:\\Users\\User\\OneDrive\\Desktop\\spam.csv", encoding="latin-1")
+    df = pd.read_csv("spam.csv", encoding="latin-1")
     print(df.shape)
     df.drop(['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'], axis=1, inplace=True)
     df = df.drop_duplicates()
