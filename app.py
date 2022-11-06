@@ -5,20 +5,20 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 
 
-def speak(str):
-    from win32com.client import Dispatch
-    spk = Dispatch("SAPI.SpVoice")
-    spk.Speak(str)
+# def speak(str):
+#     from win32com.client import Dispatch
+#     spk = Dispatch("SAPI.SpVoice")
+#     spk.Speak(str)
 
-def talk():
-    speak("This Project helps you to check your mail content is either SPAM or HAM")
-    speak("Enter the content in the provided Text-Area")
+# def talk():
+#     speak("This Project helps you to check your mail content is either SPAM or HAM")
+#     speak("Enter the content in the provided Text-Area")
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    talk()
+    #talk()
     return render_template('index.html')
 
 
@@ -46,10 +46,10 @@ def predict():
         data = [message]
         vect = cv.transform(data).toarray()
         my_prediction = clf.predict(vect)
-        if my_prediction[0] == 0:
-            speak("This is Not A Spam Email")
-        else:
-            speak("This is A Spam Email")
+        # if my_prediction[0] == 0:
+        #     speak("This is Not A Spam Email")
+        # else:
+        #     #speak("This is A Spam Email")
     return render_template('index.html',prediction=my_prediction)
 
 
